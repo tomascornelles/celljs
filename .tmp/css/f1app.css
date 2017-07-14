@@ -1,0 +1,35 @@
+body {
+  font-family: 'Monaco', monospace;
+  font-size: 16px;
+  background: #333333;
+  color: #cccccc; }
+
+table {
+  width: 100%; }
+
+th {
+  background: #cccccc;
+  color: #333333;
+  width: 50px; }
+
+th.imposible {
+  background: #993333;
+  color: #cccccc; }
+
+.barra {
+  background: #444;
+  width: 50%; }
+  .barra .extra {
+    background: #666;
+    float: left;
+    height: 1em; }
+  .barra .posible {
+    background: #44cc55;
+    float: left;
+    height: 1em; }
+  .barra .imposible {
+    background: #993333;
+    float: left;
+    height: 1em; }
+
+/*# sourceMappingURL=maps/f1app.css.map */

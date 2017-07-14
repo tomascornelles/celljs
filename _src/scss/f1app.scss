@@ -1,0 +1,38 @@
+$negro: #333333;
+$blanco: #cccccc;
+$rojo: #993333;
+$verde: #44cc55;
+body {
+  font-family: 'Monaco', monospace;
+  font-size: 16px;
+  background: $negro;
+  color: $blanco;
+}
+table {
+  width: 100%;
+}
+th {
+  background: $blanco;
+  color: $negro;
+  width: 50px;
+}
+th.imposible {
+  background: $rojo;
+  color: $blanco;
+}
+.barra {
+  background: #444;
+  width: 50%;
+	.extra {
+	  background: #666;
+	  float:left;height: 1em;
+	}
+	.posible {
+	  background: $verde;
+	  float:left;height: 1em;
+	}
+	.imposible {
+	  background: $rojo;
+	  float:left;height: 1em;
+	}
+}
