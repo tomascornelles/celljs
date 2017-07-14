@@ -2,6 +2,7 @@
 F1App = {
   $cell: true,
   _items: [],
+  id: 'f1app',
   $type: 'table',
   $init: function () {
     this._stats()
@@ -31,7 +32,7 @@ F1App = {
       $type: 'tr',
       $components: [{
         $type: 'th',
-        $text: item.position ? item.position : '',
+        $text: item.position,
         class: this._clase(item)
       }, {
         $type: 'td',

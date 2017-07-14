@@ -138,14 +138,14 @@ gulp.task('serve', ['watch'], function () {
   browserSync.init({
     server: basePath.dist,
     port: 8888,
-    files: [assetsPath.stylesDist + '/*.css']
+    files: [assetsPath.stylesDist + '/*.css',assetsPath.scriptsDist + '/*.js',assetsPath.htmlDist + '/*.html']
   })
 })
 
 gulp.task('watch', ['build'], function () {
   gulp.watch(assetsPath.stylesSrc + '/**/*.scss', ['css'])
   gulp.watch(assetsPath.scriptsSrc + '/**/*.js', ['js'])
-  gulp.watch(assetsPath.scriptsSrc + '/**/*.html', ['html'])
+  gulp.watch(assetsPath.htmlSrc + '/**/*.html', ['html'])
   gulp.watch(assetsPath.imgSrc + '/*.+(png|jpg|svg|gif)', ['images'])
 })
 
