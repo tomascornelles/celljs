@@ -3,6 +3,7 @@ var beep = require('beepbeep')
 var concat = require('gulp-concat')
 var cssnano = require('gulp-cssnano')
 var imagemin = require('gulp-imagemin')
+var htmlmin = require('gulp-htmlmin')
 var plumber = require('gulp-plumber')
 var pngquant = require('imagemin-pngquant')
 var runSequence = require('run-sequence')
@@ -114,6 +115,7 @@ gulp.task('js', ['js-lint'], function () {
 
 gulp.task('html', function () {
   return gulp.src(assetsPath.htmlSrc + '/*.html')
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(assetsPath.htmlDist))
 })
 

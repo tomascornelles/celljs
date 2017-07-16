@@ -7,6 +7,9 @@ F1App = {
   $init: function () {
     this._stats()
   },
+  $update: function () {
+    if (this._items.length > 0) this.$components = this._items.map(this._template)
+  },
   _stats: function () {
     fetch('http://ergast.com/api/f1/current/driverStandings.json').then(function (res) {
       return res.json()
@@ -18,14 +21,14 @@ F1App = {
     this._items = result.DriverStandings
     this._race = result.round
   },
-  _actual: function (elem) {
-    return elem.points / (20 * 25) * 100
+  _actual: function (points) {
+    return points / (20 * 25) * 100
   },
-  _posible: function (elem) {
+  _posible: function () {
     return (20 - this._race) / 20 * 100
   },
-  _clase: function (elem) {
-    return (this._actual(elem) + this._posible(elem) > this._actual(this._items[0])) ? 'posible' : 'imposible'
+  _clase: function (points) {
+    return (this._actual(points) + this._posible() > this._actual(this._items[0].points)) ? 'posible' : 'imposible'
   },
   _template: function (item) {
     return {
@@ -33,27 +36,17 @@ F1App = {
       $components: [{
         $type: 'th',
         $text: item.position,
-        class: this._clase(item)
+        class: this._clase(item.points)
       }, {
         $type: 'td',
         $text: item.Driver.givenName + ' ' + item.Driver.familyName
       }, {
         $type: 'td',
-        $text: item.points ? item.points : ''
+        $text: item.points
       }, {
         $type: 'td',
-        class: 'barra',
-        $components: [{
-          style: 'width:' + this._actual(item) + '%',
-          class: this._clase(item)
-        }, {
-          style: 'width:' + this._posible(item) + '%',
-          class: 'extra'
-        }]
+        $components: barra._template(this._actual(item.points), this._posible(), this._clase(item.points))
       }]
     }
-  },
-  $update: function () {
-    this.$components = this._items.map(this._template)
   }
 }

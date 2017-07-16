@@ -4,7 +4,7 @@ $rojo: #e74c3c;
 $verde: #27ae60;
 body {
   font-family: 'Monaco', monospace;
-  font-size: 16px;
+  font-size: 1.4vw;
   background: $blanco;
   color: $negro;
 }
@@ -20,18 +20,39 @@ th.imposible {
   background: $rojo;
   color: $blanco;
 }
-.barra {
+td:last-child {
   width: 50%;
-	.extra {
-	  background: #ecf0f1;
-	  float:left;height: 1em;
-	}
+}
+t-barra {
+  width: 100%;
+  display: block;
+  background: darken($blanco, 5%);
+  overflow: hidden;
+  div {
+    float:left;height: 1em;
+  }
+  .extra {
+    background: darken($blanco, 15%);
+  }
 	.posible {
 	  background: $verde;
-	  float:left;height: 1em;
 	}
 	.imposible {
-	  background: $rojo;
-	  float:left;height: 1em;
+	  background: repeating-linear-gradient(
+        -45deg,
+        darken($rojo, 10%),
+        darken($rojo, 10%) 10px,
+        $rojo, 10px,
+        $rojo 20px
+      );
+    & + .extra {
+      background: repeating-linear-gradient(
+        -45deg,
+        darken($blanco, 15%),
+        darken($blanco, 15%) 10px,
+        darken($blanco, 10%) 10px,
+        darken($blanco, 10%) 20px
+      );
+    }
 	}
 }
