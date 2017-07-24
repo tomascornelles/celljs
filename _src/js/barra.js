@@ -1,5 +1,5 @@
 barra = {
-  _template: function (actual, posible = actual, clase = '') {
+  _template: function (actual, posible, clase) {
     return [{
       $type: 't-barra',
       $components: [{
