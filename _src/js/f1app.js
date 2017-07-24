@@ -13,22 +13,22 @@ F1App = {
     if (this._items.length > 0) this.$components = this._items.map(this._template)
   },
   _stats: function () {
-    fetch('http://ergast.com/api/f1/2016/'+ this._race+'/driverStandings.json').then(function (res) {
+    fetch('http://ergast.com/api/f1/current/driverStandings.json').then(function (res) {
       return res.json()
     }).then(function (res) {
       this._refresh(res.MRData.StandingsTable.StandingsLists[0])
-      this._race = window.settimeout(this._updateRace(),1000)
+      // this._race = window.settimeout(this._updateRace(),1000)
     }.bind(this))
   },
   _refresh: function (result) {
     this._items = result.DriverStandings
-    // this._race = result.round
+    this._race = result.round
   },
   _actual: function (points) {
-    return points / (22 * 25) * 100
+    return points / (20 * 25) * 100
   },
   _posible: function () {
-    return (22 - this._race) / 22 * 100
+    return (20 - this._race) / 20 * 100
   },
   _clase: function (points) {
     return ((this._items[0].points == points) || (this._actual(points) + this._posible() > this._actual(this._items[0].points))) ? 'posible' : 'imposible'
