@@ -2,12 +2,14 @@
 F1App = {
   $cell: true,
   _items: [],
+  _race: '1',
   id: 'f1app',
   $type: 'table',
   $init: function () {
     this._stats()
   },
   $update: function () {
+    this._stats()
     if (this._items.length > 0) this.$components = this._items.map(this._template)
   },
   _stats: function () {
@@ -15,6 +17,7 @@ F1App = {
       return res.json()
     }).then(function (res) {
       this._refresh(res.MRData.StandingsTable.StandingsLists[0])
+      // this._race = window.settimeout(this._updateRace(),1000)
     }.bind(this))
   },
   _refresh: function (result) {
@@ -28,7 +31,10 @@ F1App = {
     return (20 - this._race) / 20 * 100
   },
   _clase: function (points) {
-    return (this._actual(points) + this._posible() > this._actual(this._items[0].points)) ? 'posible' : 'imposible'
+    return ((this._items[0].points == points) || (this._actual(points) + this._posible() > this._actual(this._items[0].points))) ? 'posible' : 'imposible'
+  },
+  _updateRace: function () {
+    return this._race++
   },
   _template: function (item) {
     return {

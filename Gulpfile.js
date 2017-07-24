@@ -1,4 +1,5 @@
 var gulp = require('gulp')
+var babel = require('gulp-babel');
 var beep = require('beepbeep')
 var concat = require('gulp-concat')
 var cssnano = require('gulp-cssnano')
@@ -20,6 +21,7 @@ var basePath = {
   dist: './app',
   tmp: './.tmp'
 }
+var main = 'f1app'
 
 var assetsPath = {
   stylesSrc: basePath.src + '/scss',
@@ -33,6 +35,7 @@ var assetsPath = {
   imgDist: basePath.dist + '/img',
 
   scriptsSrc: basePath.src + '/js',
+  scriptsTemp: basePath.tmp + '/js',
   scriptsDist: basePath.dist + '/js'
 }
 
@@ -57,7 +60,7 @@ var onError = function (err) {
 // ----------------------------------------------------------------------------
 
 gulp.task('scss', function () {
-  return gulp.src([assetsPath.stylesSrc + '/**/*.scss'])
+  return gulp.src([assetsPath.stylesSrc + '/' + main + '.scss'])
     .pipe(plumber({errorHandler: onError}))
     .pipe(sourcemaps.init())
     .pipe(sass())
@@ -93,8 +96,19 @@ gulp.task('js-lint', function () {
     }))
 })
 
-gulp.task('js', ['js-lint'], function () {
-  return gulp.src([assetsPath.scriptsSrc + '/vendor/*.js', assetsPath.scriptsSrc + '/*.js'])
+gulp.task('js-babel', function () {
+  var scripts = []
+  scripts.push(assetsPath.scriptsSrc + '/*.js')
+  return gulp.src(scripts)
+    .pipe(plumber({
+      errorHandler: onError
+    }))
+    .pipe(babel({presets: ['es2015'] }))
+    .pipe(gulp.dest(assetsPath.scriptsTemp))
+})
+
+gulp.task('js', ['js-lint', 'js-babel'], function () {
+  return gulp.src([assetsPath.scriptsSrc + '/vendor/*.js', assetsPath.scriptsTemp + '/*.js'])
     .pipe(plumber({
       errorHandler: onError
     }))
@@ -124,8 +138,7 @@ gulp.task('html', function () {
 
 gulp.task('images', function () {
   return gulp.src([
-    assetsPath.imgSrc + '/**/*.+(png|jpg|svg|gif)',
-    assetsPath.heliosImages + '/**/*.+(png|jpg|svg|gif)'
+    assetsPath.imgSrc + '/**/*.+(png|jpg|svg|gif)'
   ])
     .pipe(imagemin({
       progressive: true,

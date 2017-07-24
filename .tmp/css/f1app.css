@@ -1,3 +1,4 @@
+/*! f1app */
 body {
   font-family: 'Monaco', monospace;
   font-size: 1.4vw;
@@ -19,21 +20,17 @@ th.imposible {
 td:last-child {
   width: 50%; }
 
+/*! componentes */
+/*! barra */
 t-barra {
-  width: 100%;
-  display: block;
-  background: #f2f2f2;
-  overflow: hidden; }
+  height: 1em;
+  display: block; }
   t-barra div {
-    float: left;
-    height: 1em; }
-  t-barra .extra {
-    background: #d9d9d9; }
+    height: 100%;
+    display: inline-block; }
   t-barra .posible {
     background: #27ae60; }
-  t-barra .imposible {
-    background: repeating-linear-gradient(-45deg, #d62c1a, #d62c1a 10px, #e74c3c, 10px, #e74c3c 20px); }
-    t-barra .imposible + .extra {
-      background: repeating-linear-gradient(-45deg, #d9d9d9, #d9d9d9 10px, #e6e6e6 10px, #e6e6e6 20px); }
+  t-barra .extra {
+    background: #e6e6e6; }
 
 /*# sourceMappingURL=maps/f1app.css.map */
