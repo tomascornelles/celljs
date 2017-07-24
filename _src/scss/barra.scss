@@ -1,15 +1,34 @@
 /*! barra */
 t-barra {
-  height: 1em;
+  width: 100%;
   display: block;
+  background: darken($blanco, 5%);
+  overflow: hidden;
   div {
-    height: 100%;
-    display: inline-block;
+    float:left;height: 1em;
+  }
+  .extra {
+    background: darken($blanco, 15%);
   }
   .posible {
     background: $verde;
   }
-  .extra {
-    background: darken($blanco, 10%)
+  .imposible {
+    background: repeating-linear-gradient(
+        -45deg,
+        darken($rojo, 10%),
+        darken($rojo, 10%) 10px,
+        $rojo, 10px,
+        $rojo 20px
+      );
+    & + .extra {
+      background: repeating-linear-gradient(
+        -45deg,
+        darken($blanco, 15%),
+        darken($blanco, 15%) 10px,
+        darken($blanco, 10%) 10px,
+        darken($blanco, 10%) 20px
+      );
+    }
   }
 }
