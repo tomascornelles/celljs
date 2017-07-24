@@ -1,3 +1,4 @@
+/*! f1app */
 $negro: #2c3e50;
 $blanco: #ffffff;
 $rojo: #e74c3c;
@@ -23,3 +24,6 @@ th.imposible {
 td:last-child {
   width: 50%;
 }
+
+/*! componentes */
+@import 'barra'

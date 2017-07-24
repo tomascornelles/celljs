@@ -1,3 +1,4 @@
+/*! f1app */
 body {
   font-family: 'Monaco', monospace;
   font-size: 1.4vw;
@@ -18,5 +19,18 @@ th.imposible {
 
 td:last-child {
   width: 50%; }
+
+/*! componentes */
+/*! barra */
+t-barra {
+  height: 1em;
+  display: block; }
+  t-barra div {
+    height: 100%;
+    display: inline-block; }
+  t-barra .posible {
+    background: #27ae60; }
+  t-barra .extra {
+    background: #e6e6e6; }
 
 /*# sourceMappingURL=maps/f1app.css.map */

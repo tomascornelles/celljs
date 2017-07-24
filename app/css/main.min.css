@@ -1,2 +1,5 @@
-body{font-family:Monaco,monospace;font-size:1.4vw;background:#fff;color:#2c3e50}table{width:100%}th{background:#27ae60;color:#fff;width:50px}th.imposible{background:#e74c3c;color:#fff}td:last-child{width:50%}
+/*! f1app */body{font-family:Monaco,monospace;font-size:1.4vw;background:#fff;color:#2c3e50}table{width:100%}th{background:#27ae60;color:#fff;width:50px}th.imposible{background:#e74c3c;color:#fff}td:last-child{width:50%}
+
+/*! componentes */
+/*! barra */t-barra{height:1em;display:block}t-barra div{height:100%;display:inline-block}t-barra .posible{background:#27ae60}t-barra .extra{background:#e6e6e6}
 /*# sourceMappingURL=maps/main.min.css.map */
